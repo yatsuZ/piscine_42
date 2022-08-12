@@ -1,0 +1,14 @@
+lister les fichiers =ls
++
+les répertoires du répertoire courant donc -A do not list implied . and ..(mais ls naffiche pas de base les . et .. bizard au final c'est juste moi jsp lire en anglais il affiche les . et ..)
++
+mais pas les fichiers cachés, ni "." ni ".." (rien ne
+commençant par un point) . ls n'affiche pas les point donc trkl
++
+triés par date de modification donc -t     sort by modification time, newest first
++
+séparés par des virgules donc -m     fill width with a comma separated list of entries 
++
+de manière à ce que les répertoires soient suivis d’un caractère slash. donc -p              append / indicator to directories
+donc 
+ls -mtp
