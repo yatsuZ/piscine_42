@@ -1,50 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 17:23:04 by yzaoui            #+#    #+#             */
-/*   Updated: 2022/08/25 14:15:16 by yzaoui           ###   ########.fr       */
+/*   Created: 2022/08/25 07:24:37 by yzaoui            #+#    #+#             */
+/*   Updated: 2022/08/25 14:27:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
-	unsigned int	u;
 
-	u = ft_strlen(src);
 	i = 0;
-	while (src[i] && i < size - 1 && size != 0)
+	while (i < n && (s1[i] || s2[i]))
 	{
-		dest[i] = src[i];
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	while (i < size)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (u);
+	return (0);
 }
-
-/* int  main(int argc, char **argv)
+/*
+int	main(void)
 {
-        printf("%s", argv[1]);
-        printf("%d\n ", ft_strlcpy(argv[1], argv[2], 0));
-        printf("%s\n ", argv[1]);
+	printf("%d", ft_strncmp("Cour", "Cour", 5));
+	return (0);
 }*/

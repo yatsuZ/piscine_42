@@ -1,50 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 17:23:04 by yzaoui            #+#    #+#             */
-/*   Updated: 2022/08/25 14:15:16 by yzaoui           ###   ########.fr       */
+/*   Created: 2022/08/17 13:43:23 by yzaoui            #+#    #+#             */
+/*   Updated: 2022/08/24 16:05:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_strlen(char *str)
+void	ft_rev_int_tab(int *tab, int size)
+{
+	int	r;
+	int	i;
+
+	i = 0;
+	r = 0;
+	while (size / 2 > i)
+	{
+		r = tab[i];
+		tab[i] = tab[size - 1 - i];
+		tab[size - i - 1] = r;
+		i++;
+	}
+}
+/*
+void	affichage_tab_int(int *tab, int size)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	u;
-
-	u = ft_strlen(src);
-	i = 0;
-	while (src[i] && i < size - 1 && size != 0)
-	{
-		dest[i] = src[i];
-		i++;
-	}
 	while (i < size)
 	{
-		dest[i] = '\0';
+		if (i == 0)
+			printf("[");
+		printf(" %d,", tab[i]);
 		i++;
+		if (i == size)
+			printf(" ]\n");
 	}
-	return (u);
 }
 
-/* int  main(int argc, char **argv)
+int	main(void)
 {
-        printf("%s", argv[1]);
-        printf("%d\n ", ft_strlcpy(argv[1], argv[2], 0));
-        printf("%s\n ", argv[1]);
+	int	tab[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int size = 10;
+	affichage_tab_int(tab, size);
+	ft_rev_int_tab(tab, size);
+	affichage_tab_int(tab, size);
+	return (0);
 }*/

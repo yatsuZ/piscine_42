@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 17:23:04 by yzaoui            #+#    #+#             */
-/*   Updated: 2022/08/25 14:15:16 by yzaoui           ###   ########.fr       */
+/*   Created: 2022/08/25 09:15:12 by yzaoui            #+#    #+#             */
+/*   Updated: 2022/08/28 18:11:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,33 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
-	unsigned int	u;
+	unsigned int	srclen;
+	unsigned int	destlen;
 
-	u = ft_strlen(src);
 	i = 0;
-	while (src[i] && i < size - 1 && size != 0)
+	srclen = ft_strlen(src);
+	destlen = ft_strlen(dest);
+	if (destlen < size)
+		srclen = srclen + destlen;
+	else
+		srclen = srclen + size;
+	if (size > 0)
 	{
-		dest[i] = src[i];
-		i++;
+		while (src[i] && (i + destlen) < size - 1)
+		{
+			dest[i + destlen] = src[i];
+			i++;
+		}
+		dest[i + destlen] = '\0';
 	}
-	while (i < size)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (u);
+	return (srclen);
 }
-
-/* int  main(int argc, char **argv)
+/*
+int	main(void)
 {
-        printf("%s", argv[1]);
-        printf("%d\n ", ft_strlcpy(argv[1], argv[2], 0));
-        printf("%s\n ", argv[1]);
+	prinf("%d",ft_strlcat("jen ai marre", "OUI", 7));
+	return (0);
 }*/

@@ -1,50 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 17:23:04 by yzaoui            #+#    #+#             */
-/*   Updated: 2022/08/25 14:15:16 by yzaoui           ###   ########.fr       */
+/*   Created: 2022/08/25 07:43:37 by yzaoui            #+#    #+#             */
+/*   Updated: 2022/08/28 18:21:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+//#include <stdlib.h>
 
-int	ft_strlen(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	if (to_find == 0 || to_find[i] == '\0')
+		return (str);
 	while (str[i])
-		i++;
-	return (i);
-}
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	u;
-
-	u = ft_strlen(src);
-	i = 0;
-	while (src[i] && i < size - 1 && size != 0)
 	{
-		dest[i] = src[i];
+		j = 0;
+		while (to_find[j] == str[j + i])
+		{
+			j++;
+			if (to_find[j] == '\0')
+				return (str + i);
+		}
 		i++;
 	}
-	while (i < size)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (u);
+	return (0);
 }
-
-/* int  main(int argc, char **argv)
+/*
+int	main(void)
 {
-        printf("%s", argv[1]);
-        printf("%d\n ", ft_strlcpy(argv[1], argv[2], 0));
-        printf("%s\n ", argv[1]);
-}*/
+	char	str[] = "";
+	char	tf[] = "";
+
+	printf("%s:%p \n", ft_strstr(str, tf), str);
+	printf("%s:%p", ft_strstr(str, tf), str);
+}
+*/
